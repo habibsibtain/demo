@@ -62,7 +62,7 @@ const Tournament = () => {
         />
       </div>
       {/* Other Sports */}
-      <div className="grid grid-cols-3 md:gap-[5rem]  gap-[2rem] px-8 items-center">
+      <div className="grid grid-cols-3 md:gap-[5rem]  gap-[1rem] px-8 items-center">
         {data.map((item, index) => (
           <div
             key={index}
