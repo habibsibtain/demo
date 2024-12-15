@@ -15,9 +15,8 @@ interface SportData {
 
 const Tournament = () => {
   const [selectedSport, setSelectedSport] = useState<SportData | null>(null);
-  
 
-  const data : SportData[] = [
+  const data: SportData[] = [
     {
       name: "BASKETBALL",
       image: "/tournament-img/Basketball.png",
@@ -251,8 +250,7 @@ const Tournament = () => {
                   <span className="font-bold text-3xl self-center  ">
                     RULE AND REGULATIONS
                   </span>
-                  <button className="btn btn-sm btn-circle border-none outline-none btn-ghost absolute right-2 top-2"
-                  >
+                  <button className="btn btn-sm btn-circle border-none outline-none btn-ghost absolute right-2 top-2">
                     ✕
                   </button>
                 </form>
@@ -270,7 +268,13 @@ const Tournament = () => {
                     </ul>
                     <div className="flex flex-col items-end justify-center ">
                       <button className="btn btn-primary mt-4">
-                        Read More{" "}
+                        <a
+                          href="/path/to/your/file.pdf" // Replace with the actual file path
+                          download="filename.pdf" // You can specify the filename if needed
+                          className="text-white"
+                        >
+                          Read More
+                        </a>
                       </button>
                     </div>
                   </>
