@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { title } from "process";
 import React, { useState } from "react";
 
 interface Rule {
@@ -17,6 +18,20 @@ const Tournament = () => {
   const [selectedSport, setSelectedSport] = useState<SportData | null>(null);
 
   const data: SportData[] = [
+    {
+      name: "BGMI",
+      image: "/tournament-img/BGMI.png",
+      rules: {
+        title: "GENERAL RULES",
+        list: [
+          "The game is free to play and can be played online or offline.",
+          "Players must be 18 years of age or older to play.",
+          "Players can join or leave the game at any time.",
+          "Players can join or leave the game at any time.",
+          "Players can join or leave the game at any time.",
+        ],
+      },
+    },
     {
       name: "BASKETBALL",
       image: "/tournament-img/Basketball.png",
@@ -203,7 +218,16 @@ const Tournament = () => {
       </h1>
 
       {/* PUBG */}
-      <div className="md:my-16 my-8 md:w-[19rem] md:h-[19rem] h-[14rem] w-[14rem] flex items-center justify-center rounded-3xl cursor-pointer transform hover:scale-105 duration-300">
+      <div
+        className="md:my-16 my-8 md:w-[19rem] md:h-[19rem] h-[14rem] w-[14rem] flex items-center justify-center rounded-3xl cursor-pointer transform hover:scale-105 duration-300 "
+        onClick={() => {
+          setSelectedSport(data[0]);
+          const modal = document.getElementById(
+            "my_modal_4"
+          ) as HTMLDialogElement;
+          modal?.showModal();
+        }}
+      >
         <Image
           src="/tournament-img/BGMI.png"
           alt="BGMI"
@@ -216,140 +240,83 @@ const Tournament = () => {
       {/* Other Sports */}
       <div className="flex flex-col md:grid md:grid-cols-3 md:gap-[5rem] gap-[1rem] px-8 items-center relative">
         {data.map((item, index) => (
-          <div
-            key={index}
-            className={`relative w-[10rem] h-[10rem] mb-8 md:mb-0  md:w-[14rem] md:h-[14rem] flex items-center justify-center rounded-3xl ${
-              index === 9 ? "col-span-1 col-start-2" : ""
-            }`}
-          >
-            <div
-              onClick={() => {
-                setSelectedSport(item);
-                const modal = document.getElementById(
-                  "my_modal_3"
-                ) as HTMLDialogElement;
-                modal?.showModal();
-              }}
+          
+            index === 0 ? ('') :(
+              <div
+              key={index}
+              className={`relative w-[10rem] h-[10rem] mb-8 md:mb-0  md:w-[14rem] md:h-[14rem] flex items-center justify-center rounded-3xl ${
+                index === data.length-1 ? "col-span-1 col-start-2" : ""
+              }`}
             >
-              {/* Image */}
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={300}
-                height={300}
-                className="w-full h-full cursor-pointer transform hover:scale-105 duration-300"
-              />
-            </div>
-
-            {/* You can open the modal using document.getElementById('ID').showModal() method */}
-
-            <dialog id="my_modal_3" className="modal font-bunken ">
-              <div className="modal-box w-11/12 max-w-5xl ">
-                <form method="dialog ">
-                  {/* if there is a button in form, it will close the modal */}
-                  <span className="font-bold text-3xl self-center  ">
-                    RULE AND REGULATIONS
-                  </span>
-                  <button className="btn btn-sm btn-circle border-none outline-none btn-ghost absolute right-2 top-2">
-                    ✕
-                  </button>
-                </form>
-                {selectedSport && (
-                  <>
-                    <h3 className="font-bold text-xl my-6 ">
-                      {selectedSport.rules.title}!
-                    </h3>
-                    <ul className="list-disc px-4 ">
-                      {selectedSport.rules.list.map((rule, index) => (
-                        <li className="my-6 text-sm " key={index}>
-                          {rule}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex flex-col items-end justify-center ">
-                      <button className="btn btn-primary mt-4">
-                        <a
-                          href="/path/to/your/file.pdf" // Replace with the actual file path
-                          download="filename.pdf" // You can specify the filename if needed
-                          className="text-white"
-                        >
-                          Read More
-                        </a>
-                      </button>
-                    </div>
-                  </>
-                )}
+              <div
+                onClick={() => {
+                  setSelectedSport(item);
+                  const modal = document.getElementById(
+                    "my_modal_4"
+                  ) as HTMLDialogElement;
+                  modal?.showModal();
+                }}
+              >
+                {/* Image */}
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={300}
+                  height={300}
+                  className={`cursor-pointer transform hover:scale-105 duration-300 md:w-[14rem] md:h-[14rem] w-[10rem] h-[10rem]`}
+                />
               </div>
-            </dialog>
-
-            {/* Connection Lines */}
-            {/* Vertical Line */}
-            {index < data.length - 1 && index % 2 === 0 && (
-              <div
-                className="md:hidden absolute w-[2px] bg-white"
-                style={{
-                  top: "50%",
-                  right: "-4rem",
-                  height: "13rem",
-                }}
-              />
-            )}
-            {index < data.length - 1 && index % 2 !== 0 && (
-              <div
-                className="md:hidden absolute w-[2px] bg-white"
-                style={{
-                  top: "50%",
-                  left: "-4rem",
-                  height: "13rem",
-                }}
-              />
-            )}
-
-            {/* Horizontal Line */}
-            {index < data.length && (
-              <div
-                className="md:hidden absolute h-[2px] bg-white"
-                style={{
-                  right: "-4rem",
-                  top: "50%",
-                  width: "3rem",
-                  transform: "translateY(-50%)",
-                }}
-              />
-            )}
-            {index < data.length &&
-              index !== 0 &&
-              index !== data.length - 1 && (
+  
+              {/* Connection Lines */}
+              {/* Vertical Line */}
+              {index < data.length - 1 && index % 2 === 0 && (
+                <div
+                  className="md:hidden absolute w-[2px] bg-white"
+                  style={{
+                    top: "50%",
+                    right: "-4rem",
+                    height: "13rem",
+                  }}
+                />
+              )}
+              {index < data.length - 1 && index % 2 !== 0 && (
+                <div
+                  className="md:hidden absolute w-[2px] bg-white"
+                  style={{
+                    top: "50%",
+                    left: "-4rem",
+                    height: "13rem",
+                  }}
+                />
+              )}
+  
+              {/* Horizontal Line */}
+              {index < data.length && (
                 <div
                   className="md:hidden absolute h-[2px] bg-white"
                   style={{
-                    left: "-4rem",
+                    right: "-4rem",
                     top: "50%",
                     width: "3rem",
                     transform: "translateY(-50%)",
                   }}
                 />
               )}
-            {/* Connector Circle */}
-            {index === 0 || index === data.length - 1 ? (
-              <div
-                className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
-                style={{
-                  right: "-1.5rem",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                }}
-              />
-            ) : (
-              <>
-                <div
-                  className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
-                  style={{
-                    left: "-1.5rem",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                  }}
-                />
+              {index < data.length &&
+                index !== 0 &&
+                index !== data.length - 1 && (
+                  <div
+                    className="md:hidden absolute h-[2px] bg-white"
+                    style={{
+                      left: "-4rem",
+                      top: "50%",
+                      width: "3rem",
+                      transform: "translateY(-50%)",
+                    }}
+                  />
+                )}
+              {/* Connector Circle */}
+              {index === 0 || index === data.length - 1 ? (
                 <div
                   className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
                   style={{
@@ -358,11 +325,78 @@ const Tournament = () => {
                     transform: "translateY(-50%)",
                   }}
                 />
-              </>
-            )}
-          </div>
+              ) : (
+                <>
+                  <div
+                    className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
+                    style={{
+                      left: "-1.5rem",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                    }}
+                  />
+                  <div
+                    className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
+                    style={{
+                      right: "-1.5rem",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                    }}
+                  />
+                </>
+              )}
+            </div>
+            )
+         
+        
         ))}
       </div>
+
+      <dialog id="my_modal_4" className="modal font-bunken ">
+        <div className="modal-box w-11/12 max-w-5xl ">
+          <form method="dialog px-4 ">
+            {/* if there is a button in form, it will close the modal */}
+            <span className="font-bold text-3xl self-center ">
+              RULE AND REGULATIONS
+            </span>
+            <button
+              className="btn btn-sm btn-circle border-none outline-none btn-ghost absolute right-2 top-2"
+              onClick={() => {
+                event?.preventDefault();
+                const modal = document.getElementById(
+                  "my_modal_4"
+                ) as HTMLDialogElement;
+                modal?.close();
+              }}
+            >
+              ✕
+            </button>
+          </form>
+          {selectedSport && (
+            <>
+              <h3 className="font-bold text-xl my-6 ">
+                {selectedSport.rules.title}!
+              </h3>
+              <ul className="list-disc px-4 ">
+                {selectedSport.rules.list.map((rule, index) => (
+                  <li className="my-6 text-sm " key={index}>
+                    {rule}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex justify-end mt-4 text-center">
+                <a
+                  href={`/files/${selectedSport.name.toLowerCase()}-rules.pdf`}
+                  download={`${selectedSport.name}-Rules.pdf`}
+                  className="btn btn-primary"
+                >
+                  Read More
+                </a>
+              </div>
+            </>
+          )}
+        </div>
+      </dialog>
     </div>
   );
 };
