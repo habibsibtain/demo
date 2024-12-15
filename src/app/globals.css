@@ -19,3 +19,11 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* globals.css */
+
+@font-face {
+  font-family: "Bunken";
+  src: url("/fonts/bunken/FontsFree-Net-Bunken-Tech-Sans-SC-Wide-W01Bd-4.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
