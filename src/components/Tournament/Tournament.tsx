@@ -268,7 +268,7 @@ const Tournament = () => {
   
               {/* Connection Lines */}
               {/* Vertical Line */}
-              {index < data.length - 1 && index % 2 === 0 && (
+              {index < data.length  && index % 2 !== 0 && (
                 <div
                   className="md:hidden absolute w-[2px] bg-white"
                   style={{
@@ -278,7 +278,7 @@ const Tournament = () => {
                   }}
                 />
               )}
-              {index < data.length - 1 && index % 2 !== 0 && (
+              {index < data.length - 1 && index % 2 === 0 && (
                 <div
                   className="md:hidden absolute w-[2px] bg-white"
                   style={{
@@ -302,7 +302,7 @@ const Tournament = () => {
                 />
               )}
               {index < data.length &&
-                index !== 0 &&
+                index !== 1 &&
                 index !== data.length - 1 && (
                   <div
                     className="md:hidden absolute h-[2px] bg-white"
@@ -315,7 +315,7 @@ const Tournament = () => {
                   />
                 )}
               {/* Connector Circle */}
-              {index === 0 || index === data.length - 1 ? (
+              {index === 1 || index === data.length - 1 ? (
                 <div
                   className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
                   style={{
