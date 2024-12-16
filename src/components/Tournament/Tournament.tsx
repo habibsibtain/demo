@@ -243,7 +243,7 @@ const Tournament = () => {
             index === 0 ? ('') :(
               <div
               key={index}
-              className={`relative w-[10rem] h-[10rem] mb-8 md:mb-0  md:w-[14rem] md:h-[14rem] flex items-center justify-center rounded-3xl ${
+              className={`relative  mb-8 md:mb-0  md:w-[14rem] md:h-[14rem] flex items-center justify-center rounded-3xl ${
                 index === data.length-1 ? "col-span-1 col-start-2" : ""
               }`}
             >
@@ -262,88 +262,9 @@ const Tournament = () => {
                   alt={item.name}
                   width={300}
                   height={300}
-                  className={`cursor-pointer transform hover:scale-105 duration-300 md:w-[14rem] md:h-[14rem] w-[10rem] h-[10rem]`}
+                  className={`cursor-pointer transform hover:scale-105 duration-300 w-[14rem] h-[14rem] `}
                 />
               </div>
-  
-              {/* Connection Lines */}
-              {/* Vertical Line */}
-              {index < data.length  && index % 2 !== 0 && (
-                <div
-                  className="md:hidden absolute w-[2px] bg-white"
-                  style={{
-                    top: "50%",
-                    right: "-4rem",
-                    height: "13rem",
-                  }}
-                />
-              )}
-              {index < data.length - 1 && index % 2 === 0 && (
-                <div
-                  className="md:hidden absolute w-[2px] bg-white"
-                  style={{
-                    top: "50%",
-                    left: "-4rem",
-                    height: "13rem",
-                  }}
-                />
-              )}
-  
-              {/* Horizontal Line */}
-              {index < data.length && (
-                <div
-                  className="md:hidden absolute h-[2px] bg-white"
-                  style={{
-                    right: "-4rem",
-                    top: "50%",
-                    width: "3rem",
-                    transform: "translateY(-50%)",
-                  }}
-                />
-              )}
-              {index < data.length &&
-                index !== 1 &&
-                index !== data.length - 1 && (
-                  <div
-                    className="md:hidden absolute h-[2px] bg-white"
-                    style={{
-                      left: "-4rem",
-                      top: "50%",
-                      width: "3rem",
-                      transform: "translateY(-50%)",
-                    }}
-                  />
-                )}
-              {/* Connector Circle */}
-              {index === 1 || index === data.length - 1 ? (
-                <div
-                  className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
-                  style={{
-                    right: "-1.5rem",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                  }}
-                />
-              ) : (
-                <>
-                  <div
-                    className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
-                    style={{
-                      left: "-1.5rem",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                    }}
-                  />
-                  <div
-                    className="md:hidden absolute w-[1rem] h-[1rem] bg-white rounded-full"
-                    style={{
-                      right: "-1.5rem",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                    }}
-                  />
-                </>
-              )}
             </div>
             )
          
